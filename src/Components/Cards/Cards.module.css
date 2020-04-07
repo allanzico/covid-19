@@ -1,0 +1,43 @@
+.container {
+    margin: 50px 0;
+}
+
+.card {
+    margin: 5% 0;
+
+}
+
+
+.infected::before {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 5px;
+    z-index: 1;
+    bottom: 0;
+    background: #00c3ff;
+  
+}
+
+.recovered::before{
+    
+  content: '';
+    position: absolute;
+    width: 30%;
+    height: 5px;
+    z-index: 1;
+    bottom: 0;
+    background: #07800d; 
+   
+}
+
+.deaths::before{
+  content: '';
+    position: absolute;
+    width: 30%;
+    height: 5px;
+    z-index: 1;
+    bottom: 0;
+    background: #ff0000;
+  
+}
