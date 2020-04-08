@@ -28,10 +28,21 @@ export const fetchDailyData = async () => {
             confirmed: dailyData.confirmed.total,
             deaths: dailyData.deaths.total,
             date: dailyData.reportDate,
+            lastUpdate: dailyData.lastUpdate
         }));
 
         return modifiedData;
     } catch (error) {
 
+    }
+}
+
+//Countries
+
+export const countries = async () => {
+    try {
+        const response = await axios.get(`${url}/countries`)
+    } catch (error) {
+        console.log(error);
     }
 }

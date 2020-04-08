@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { fetchDailyData } from '../../api/index';
 import { Line, Bar } from 'react-chartjs-2';
+import { ResponsiveLine } from 'nivo';
 import styles from './Chart.module.css';
+import cx from 'classnames';
+import moment from 'moment';
 
 const Chart = () => {
     const [dailyData, setDailyData] = useState([]);
@@ -10,11 +13,12 @@ const Chart = () => {
         const fetchApi = async () => {
             const dailyData = await fetchDailyData();
             setDailyData(dailyData);
-            console.log(dailyData);
+
         }
 
         fetchApi();
-    });
+    }, [dailyData]);
+
 
     const lineChart = (
         dailyData.length ?
@@ -24,22 +28,37 @@ const Chart = () => {
                     datasets: [{
                         label: 'Infected',
                         borderColor: '#00c3ff',
-                        fill: true,
+                        fill: false,
+                        animation: true,
+                        borderWidth: 1,
                         data: dailyData.map(({ confirmed }) => confirmed),
+                        pointStyle: 'rect'
+
                     },
                     {
                         label: 'Deaths',
                         borderColor: '#ff0000',
-                        fill: true,
+                        fill: false,
+                        animation: true,
+                        borderWidth: 1,
                         data: dailyData.map(({ deaths }) => deaths),
+                        pointStyle: 'rect'
+
                     }
                     ]
                 }}
             />) : null
     );
     return (
-        <div className={styles.container}>
-            {lineChart}
+
+        <div className={cx(styles.container, styles.chartContainer)}>
+
+
+            <div className={cx(styles.container, styles.chartContainer)}>
+
+                {lineChart}
+            </div>
+
         </div>
     )
 }
