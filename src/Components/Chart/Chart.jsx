@@ -6,7 +6,7 @@ import styles from './Chart.module.css';
 import cx from 'classnames';
 import moment from 'moment';
 
-const Chart = () => {
+const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
     const [dailyData, setDailyData] = useState([]);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Chart = () => {
         }
 
         fetchApi();
-    }, [dailyData]);
+    }, []);
 
 
     const lineChart = (
@@ -49,6 +49,30 @@ const Chart = () => {
                 }}
             />) : null
     );
+
+    const barChart = (
+        confirmed ?
+            (
+                <Bar
+
+                    data={{
+                        labels: ['Infected', 'Recovered', 'Deaths'],
+
+                        datasets: [{
+                            label: 'People',
+                            backgroundColor: ['#00c3ff', '#07800d', '#ff0000'],
+                            data: [confirmed.value, recovered.value, deaths.value]
+                        }]
+                    }}
+                    options={{
+                        legend: { display: false },
+                        title: { display: true, text: `${country}` }
+                    }}
+
+                />
+
+            ) : null
+    );
     return (
 
         <div className={cx(styles.container, styles.chartContainer)}>
@@ -56,7 +80,7 @@ const Chart = () => {
 
             <div className={cx(styles.container, styles.chartContainer)}>
 
-                {lineChart}
+                {country ? barChart : lineChart}
             </div>
 
         </div>

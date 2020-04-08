@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.9.9",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -11,6 +12,7 @@
     "bootstrap-select": "^1.13.12",
     "chart.js": "^2.9.3",
     "count-up": "^1.0.4",
+    "mdbreact": "^4.25.5",
     "moment": "^2.24.0",
     "nivo": "^0.31.0",
     "node-sass": "^4.13.1",

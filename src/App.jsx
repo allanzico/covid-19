@@ -11,6 +11,7 @@ import { fetchData } from './api/index';
 class App extends Component {
   state = {
     data: {},
+    country: '',
   }
 
   //Fetch Data
@@ -19,15 +20,23 @@ class App extends Component {
     this.setState({ data: fetchedData });
 
   }
+
+  //handle change of country
+  handleCountryChange = async (country) => {
+    const fetchedData = await fetchData(country);
+    this.setState({ data: fetchedData, country: country });
+
+  }
+
   render() {
-    const { data } = this.state;
+    const { data, country } = this.state;
     return (
       <div className={styles.container}>
 
         <Container>
-          <Navbar bg="light">
+          <Navbar className={styles.navbar}>
 
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="#home" >
               COVID–19 Tracker
             </Navbar.Brand>
           </Navbar>
@@ -38,10 +47,10 @@ class App extends Component {
           </Row>
           <Row>
             <Col sm={8}>
-              <CountryPicker />
+              <CountryPicker handleCountryChange={this.handleCountryChange} />
+              {country ? (<h5>Daily COVID–19 cases , recoveries and deaths in {country}</h5>) : <h5>Daily COVID–19 cases and deaths Globally</h5>}
 
-              <h5>Daily COVID–19 cases and deaths</h5>
-              <Chart />
+              <Chart data={data} country={country} />
               <hr></hr>
 
             </Col>
