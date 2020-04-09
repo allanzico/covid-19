@@ -8,6 +8,7 @@ import { fetchData } from './api/index';
 import moment from 'moment';
 import { FaHeart } from 'react-icons/fa';
 import corona from './Images/virus.png';
+import image from './Images/image.png';
 
 
 
@@ -41,9 +42,10 @@ class App extends Component {
         <Container>
           <Navbar className={styles.navbar}>
 
-            <Navbar.Brand href="#home" >
-              <h1>COVID–19 Tracker </h1>
+            <Navbar.Brand className={styles.navbarBrand} >
+              <h1 className={styles.navbarBrand}>COVID–19: STAY HOME! </h1>
             </Navbar.Brand>
+
           </Navbar>
           <Row>
             <Col>

@@ -7,9 +7,10 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
   margin-top: 0;
-  margin-bottom: 0.5em;
+ 
 }
 
 .container {
@@ -20,8 +21,27 @@ h1, h2, h3 {
 
 .navbar {
     background: #f1eeee;
+    margin-top: 2%;
+
 }
 
 .footer {
      text-align: center;
+}
+
+/* @media (max-width: 770px) {
+
+.navbarHeading {
+font-size: 0.5em;
+} */
+
+@media screen and (max-width:770px){ 
+ h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 25px;
+  margin-top: 0;
+ 
+}
+
 }

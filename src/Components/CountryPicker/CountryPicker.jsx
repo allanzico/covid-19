@@ -26,7 +26,7 @@ const CountryPicker = ({ handleCountryChange }) => {
                         as="select" defaultValue="" onChange={(e) => handleCountryChange(e.target.value)}
                         custom
                     >
-                        <option value="global">Global</option>
+                        <option value="">Global</option>
                         {fetchedCountries && fetchedCountries.map((country, key) => <option key={key} value={country}>{country}</option>)}
 
                     </Form.Control>
