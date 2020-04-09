@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { fetchDailyData } from '../../api/index';
 import { Line, Bar } from 'react-chartjs-2';
-import { ResponsiveLine } from 'nivo';
 import styles from './Chart.module.css';
 import cx from 'classnames';
-import moment from 'moment';
+
 
 const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
     const [dailyData, setDailyData] = useState([]);
@@ -24,24 +23,24 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
         dailyData.length ?
             (<Line
                 data={{
-                    labels: dailyData.map(({ date }) => date),
+                    labels: dailyData && dailyData.map(({ date }) => date),
                     datasets: [{
                         label: 'Infected',
                         borderColor: '#00c3ff',
                         fill: false,
                         animation: true,
                         borderWidth: 1,
-                        data: dailyData.map(({ confirmed }) => confirmed),
+                        data: dailyData && dailyData.map(({ confirmed }) => confirmed),
                         pointStyle: 'rect'
 
                     },
                     {
                         label: 'Deaths',
-                        borderColor: '#ff0000',
+                        borderColor: '#000000',
                         fill: false,
                         animation: true,
                         borderWidth: 1,
-                        data: dailyData.map(({ deaths }) => deaths),
+                        data: dailyData && dailyData.map(({ deaths }) => deaths),
                         pointStyle: 'rect'
 
                     }
@@ -60,7 +59,7 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
 
                         datasets: [{
                             label: 'People',
-                            backgroundColor: ['#00c3ff', '#07800d', '#ff0000'],
+                            backgroundColor: ['#00c3ff', '#07800d', '#000000'],
                             data: [confirmed.value, recovered.value, deaths.value]
                         }]
                     }}

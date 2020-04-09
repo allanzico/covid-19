@@ -27,9 +27,10 @@ const CountryPicker = ({ handleCountryChange }) => {
                         custom
                     >
                         <option value="global">Global</option>
-                        {fetchedCountries.map((country, key) => <option key={key} value={country}>{country}</option>)}
+                        {fetchedCountries && fetchedCountries.map((country, key) => <option key={key} value={country}>{country}</option>)}
 
                     </Form.Control>
+
                 </Form.Label>
             </Form>
 
