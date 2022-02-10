@@ -15,7 +15,7 @@
     "mdbreact": "^4.25.5",
     "moment": "^2.24.0",
     "nivo": "^0.31.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-chartjs-2": "^2.9.0",
